@@ -15,4 +15,4 @@ def send_request(url, get_number, cluster=1):
 send_request(url_cluster1, 1000)
 send_request(url_cluster2, 500, cluster=2)
 time.sleep(60)
-send_request(url_cluster1, 1000, cluster=2)
+send_request(url_cluster2, 1000, cluster=2)
