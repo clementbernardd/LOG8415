@@ -1,0 +1,17 @@
+CPUCreditBalance
+CPUCreditUsage
+CPUSurplusCreditBalance
+CPUSurplusCreditsCharged
+CPUUtilization
+DiskReadBytes
+DiskReadOps
+DiskWriteBytes
+DiskWriteOps
+MetadataNoToken
+NetworkIn
+NetworkOut
+NetworkPacketsIn
+NetworkPacketsOut
+StatusCheckFailed
+StatusCheckFailed_Instance
+StatusCheckFailed_System
