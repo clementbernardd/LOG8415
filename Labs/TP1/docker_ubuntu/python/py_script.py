@@ -29,26 +29,26 @@ class ScenarioRequest(object):
     def _scenario1(self):
         """Run the scenario on cluster 1 : 1000 GET requests."""
         print("RUN SCENARIO 1 : 1000 GET REQUESTS")
-        self._run_requests(N=1000)
+        self._run_requests(N=10)
         print("END SCENARIO 1")
 
     def _scenario2(self):
         """Run the scenario on cluster 2 : 500 GET, sleep of 60 secondes, 1000 GET requests."""
         print("RUN SCENARIO 2 : 500 GET REQUESTS, 1 MINUTE SLEEP AND 1000 GET REQUESTS")
-        self._run_requests(N=500)
+        self._run_requests(N=50)
         print("SLEEP OF 1 MINUTE")
-        time.sleep(60)
-        self._run_requests(N=1000)
+        time.sleep(1)
+        self._run_requests(N=10)
         print("END SCENARIO 2")
 
     def run_scenario(self):
         """Run the given scenario."""
         self._scenario1()
         print("SLEEP BEFORE SCENARIO 2")
-        time.sleep(120)
+        time.sleep(1)
         self._scenario2()
         print("SLEEP AFTER SCENARIO 2")
-        time.sleep(120)
+        time.sleep(1)
 
 if __name__ == '__main__':
     fire.Fire(ScenarioRequest)

@@ -14,7 +14,7 @@ function stop_cluster(){
 # Run the scenario
 function run_scenario(){
   setup_cluster "$@";
-  python3 -m $PATH_TO_PYTHON_SCRIPT run_scenario --url=$ELB_URL;
+  $PYTHON -m $PATH_TO_PYTHON_SCRIPT run_scenario --url=$ELB_URL;
   stop_cluster "$@";
 }
 

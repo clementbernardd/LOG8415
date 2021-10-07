@@ -21,6 +21,9 @@ function check_instance_health(){
     if [ "$value" == "healthy" ]; then
         echo "Instance $@ is $value for target group ARN $TARGET_ARN";
         break;
+    elif [ "$value" == "unhealthy" ]; then
+        bash '$PATH_TO_SCRIPT/stop_instances' $@;
+        bash '$PATH_TO_SCRIPT/setup_instances' $@;
     else
         echo "Instance $@ is $value. Waiting for health";
         sleep $REFRESH_RATE;

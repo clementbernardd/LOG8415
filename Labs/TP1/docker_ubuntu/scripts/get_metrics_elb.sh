@@ -21,7 +21,7 @@ function setup_available_metrics(){
   export path_to_save_all_elb_metrics=$PATH_TO_SAVE_ALL_METRICS/all_metrics_elb.txt;
   export current_directory_elb=$PATH_TO_METRICS/elb ;
   mkdir -p $current_directory_elb;
-  aws cloudwatch list-metrics --namespace AWS/ApplicationELB --query 'Metrics[*].[MetricName]'  --output text | sort | uniq > path_to_save_all_elb_metrics;
+  aws cloudwatch list-metrics --namespace AWS/ApplicationELB --query 'Metrics[*].[MetricName]'  --output text | sort | uniq > $path_to_save_all_elb_metrics;
 }
 
 function get_metrics(){

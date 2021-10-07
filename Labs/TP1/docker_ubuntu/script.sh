@@ -43,14 +43,14 @@ export PATH_TO_VISUALIZE_INSTANCE_METRICS=python.plot_script_instances
 export PATH_TO_VISUALIZE_ELB_METRICS=python.plot_script_load_balancer
 
 
-export START_TIME=$(TZ=UTC+2 date -R  '+%Y-%m-%dT00:00:00')
-export END_TIME=$(TZ=UTC-2 date -R  '+%Y-%m-%dT23:00:00')
+export START_TIME=$(TZ=UTC+2  date "+%FT%H:%M:%S")
+export END_TIME=$(TZ=UTC-2  date "+%FT%H:%M:%S")
 
 export PATH_TO_SCRIPT=scripts
 export PATH_TO_METRICS=metrics/results
 export PATH_TO_SAVE_ALL_METRICS=metrics/available_metrics
 export PERIOD_FOR_METRIC=120
-
+export PYTHON=python3
 
 
 function run_all(){
@@ -68,8 +68,8 @@ function run_all(){
   bash $PATH_TO_SCRIPT/get_metrics_elb.sh
 
   # Plot the metrics
-  python -m $PATH_TO_VISUALIZE_INSTANCE_METRICS --path=$PATH_TO_METRICS plot_instances
-  python -m $PATH_TO_VISUALIZE_ELB_METRICS --path=$PATH_TO_METRICS plot_elb_metrics
+  $PYTHON -m $PATH_TO_VISUALIZE_INSTANCE_METRICS --path=$PATH_TO_METRICS plot_instances
+  $PYTHON -m $PATH_TO_VISUALIZE_ELB_METRICS --path=$PATH_TO_METRICS plot_elb_metrics
   # Delete the load balancer and target group
   bash $PATH_TO_SCRIPT/setup_elb_and_tg.sh 'end';
 }
