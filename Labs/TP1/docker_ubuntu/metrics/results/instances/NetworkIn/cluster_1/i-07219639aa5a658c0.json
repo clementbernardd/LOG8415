@@ -1,0 +1,1 @@
+{ "Label": "NetworkIn", "Datapoints": [ { "Timestamp": "2021-10-07T20:08:00Z", "Sum": 2708944.0, "Unit": "Bytes" }, { "Timestamp": "2021-10-07T20:12:00Z", "Sum": 268343.0, "Unit": "Bytes" }, { "Timestamp": "2021-10-07T19:34:00Z", "Sum": 103834.0, "Unit": "Bytes" }, { "Timestamp": "2021-10-07T02:28:00Z", "Sum": 323522.0, "Unit": "Bytes" } ] }

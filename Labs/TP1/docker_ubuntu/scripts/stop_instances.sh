@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# VARIABLES USED TO PRINT WHEN NOT STOPPED
+REFRESH_RATE=5;
+
 # Function to start the instances
 function stop_instances(){
   aws ec2 stop-instances --instance-ids "$@" > /dev/null;
@@ -15,7 +18,7 @@ function check_stopping(){
       break;
     else
         echo "Instance $@ is waiting for stopping";
-        sleep 2;
+        sleep $REFRESH_RATE;
     fi
   done
 }

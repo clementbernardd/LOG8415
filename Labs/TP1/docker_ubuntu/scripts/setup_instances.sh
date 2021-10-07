@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# VARIABLES USED TO PRINT WHEN NOT RUNNING
+REFRESH_RATE=5;
+
 # Function to start the instances
 function start_instances(){
   aws ec2 start-instances --instance-ids "$@" > /dev/null ;
@@ -14,7 +17,7 @@ function check_running(){
       break;
     else
         echo "Instance $@ is $value. Waiting for running";
-        sleep 2;
+        sleep $REFRESH_RATE;
     fi
   done
 }

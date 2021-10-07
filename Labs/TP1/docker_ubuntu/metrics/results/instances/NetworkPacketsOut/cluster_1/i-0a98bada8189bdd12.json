@@ -1,0 +1,1 @@
+{ "Label": "NetworkPacketsOut", "Datapoints": [ { "Timestamp": "2021-10-07T02:28:00Z", "Sum": 2619.0, "Unit": "Count" }, { "Timestamp": "2021-10-07T20:10:00Z", "Sum": 2753.0, "Unit": "Count" }, { "Timestamp": "2021-10-07T19:32:00Z", "Sum": 1927.0, "Unit": "Count" } ] }

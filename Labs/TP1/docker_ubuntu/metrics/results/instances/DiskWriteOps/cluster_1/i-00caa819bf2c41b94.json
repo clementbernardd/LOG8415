@@ -1,0 +1,1 @@
+{ "Label": "DiskWriteOps", "Datapoints": [ { "Timestamp": "2021-10-07T19:34:00Z", "Sum": 0.0, "Unit": "Count" }, { "Timestamp": "2021-10-07T02:28:00Z", "Sum": 0.0, "Unit": "Count" }, { "Timestamp": "2021-10-07T20:10:00Z", "Sum": 0.0, "Unit": "Count" } ] }

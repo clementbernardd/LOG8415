@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# VARIABLES USED TO PRINT WHEN NOT HEALTHY
+REFRESH_RATE=5;
+
 # Attach instance to the target group
 function attach_instance_to_target_group(){
     aws elbv2  register-targets --target-group-arn $TARGET_ARN --targets Id="$@" > /dev/null;
@@ -20,7 +23,7 @@ function check_instance_health(){
         break;
     else
         echo "Instance $@ is $value. Waiting for health";
-        sleep 2;
+        sleep $REFRESH_RATE;
     fi
   done
 }
