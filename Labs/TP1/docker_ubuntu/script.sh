@@ -19,6 +19,11 @@ export T2_INSTANCE_4_ID=i-0c4591996f5bed860
 export T2_INSTANCES_LIST="$T2_INSTANCE_1_ID $T2_INSTANCE_2_ID $T2_INSTANCE_3_ID $T2_INSTANCE_4_ID"
 export M4_INSTANCES_LIST="$M4_INSTANCE_1_ID $M4_INSTANCE_2_ID $M4_INSTANCE_3_ID $M4_INSTANCE_4_ID"
 
+# Security group
+export SECURITY_GROUP_NAME_CLUSTER1=sg-0004075752527c784
+export SECURITY_GROUP_NAME_CLUSTER2=sg-0dc4b54ef41d9df80
+export SECURITY_GROUP_LOAD_BALANCER=sg-0dee5102851d1766b
+
 # Target ARN
 do_exportation_tg(){
   export TARGET_ARN=$(aws elbv2 describe-target-groups --query 'TargetGroups[0].TargetGroupArn' --output text)
@@ -32,10 +37,6 @@ function do_exportation_elb(){
   export ELB_NAME_METRIC=$(echo $ELB_ARN | sed  -E "s/(.*)(app\/.*)/\2/")
 }
 
-# Security group
-export SECURITY_GROUP_NAME_CLUSTER1=sg-0004075752527c784
-export SECURITY_GROUP_NAME_CLUSTER2=sg-0dc4b54ef41d9df80
-export SECURITY_GROUP_LOAD_BALANCER=sg-0dee5102851d1766b
 
 # Path to python files
 export PATH_TO_PYTHON_SCRIPT=python.py_script
