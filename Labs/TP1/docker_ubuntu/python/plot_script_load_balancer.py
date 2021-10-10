@@ -53,7 +53,7 @@ class PlottingLoadBalancer(object):
         data = {}
         for metric in self.metrics:
             value = self.open(path=os.path.join(self.path, metric, 'elb.json'))
-            if value['metric'] != len(value['metric']) * [0.0] and len(value['metric']) > 0:
+            if value['metric'] != len(value['metric']) * [0.0] and len(value['metric']) > 1:
                 data[metric] = value
         self._plot(data)
 

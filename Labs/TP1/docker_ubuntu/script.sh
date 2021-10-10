@@ -61,8 +61,8 @@ function run_all(){
   do_exportation_elb;
   do_exportation_tg;
   # Do the scenario for each cluster
-  bash $PATH_TO_SCRIPT/run_scenario.sh $T2_INSTANCES_LIST
   bash $PATH_TO_SCRIPT/run_scenario.sh $M4_INSTANCES_LIST
+  bash $PATH_TO_SCRIPT/run_scenario.sh $T2_INSTANCES_LIST
   # Get the metrics
   bash $PATH_TO_SCRIPT/get_metrics.sh 1  $M4_INSTANCES_LIST
   bash $PATH_TO_SCRIPT/get_metrics.sh 2  $T2_INSTANCES_LIST

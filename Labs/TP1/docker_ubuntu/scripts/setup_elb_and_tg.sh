@@ -8,6 +8,7 @@ function start_elb_and_tg(){
 }
 
 function stop_elb_and_tg(){
+  bash $PATH_TO_SCRIPT/stop_listener.sh;
   bash $PATH_TO_SCRIPT/stop_load_balancer.sh ;
   bash $PATH_TO_SCRIPT/stop_target_group.sh ;
 }
