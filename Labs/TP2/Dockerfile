@@ -18,10 +18,10 @@ RUN /etc/init.d/ssh start
 
 ADD configs/*xml $HADOOP_PREFIX/etc/hadoop/
 ADD configs/config /root/.ssh/config 
-ADD configs/*sh /root/
-ADD files/pg4300.txt /root/pg4300.txt
+ADD configs/*sh /root/configs/
+ADD files/* /root/files/
+ADD codes/* /root/codes/
 
 WORKDIR /root
-EXPOSE 8088 50070 50075 50030 50060 9000 
+EXPOSE 50070
 ENTRYPOINT service ssh restart && bash
-#ENTRYPOINT  bash /root/start-hadoop.sh 

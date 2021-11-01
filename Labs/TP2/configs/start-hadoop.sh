@@ -8,4 +8,4 @@ $HADOOP_PREFIX/sbin/start-dfs.sh
 
 hdfs dfs -mkdir -p input
 
-hdfs dfs -copyFromLocal pg4300.txt input
+hdfs dfs -copyFromLocal ../files/* input
