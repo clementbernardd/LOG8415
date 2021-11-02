@@ -4,7 +4,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
 RUN \
   apt-get update && apt-get install -y \
-  ssh rsync vim default-jre-headless openssh-server  
+  ssh rsync vim default-jre-headless openssh-server time 
 
 RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-2.10.1/hadoop-2.10.1.tar.gz && tar -xf hadoop-2.10.1.tar.gz -C /usr/local/ && \
 	echo "export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$PATH" >> ~/.bashrc  && \
@@ -21,6 +21,7 @@ ADD configs/config /root/.ssh/config
 ADD configs/*sh /root/configs/
 ADD files/* /root/files/
 ADD codes/* /root/codes/
+ADD results/ /root/results/
 
 WORKDIR /root
 EXPOSE 50070
