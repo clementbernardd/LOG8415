@@ -1,0 +1,23 @@
+#### Setup Spark 
+sudo apt update
+sudo sudo apt install default-jdk scala git -y
+wget https://downloads.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop2.7.tgz
+tar xvf spark-*
+sudo mv spark-3.2.0-bin-hadoop2.7 /opt/spark # On le met ailleurs que dans le rep de travail courant 
+echo "export SPARK_HOME=/opt/spark" >> ~/.profile
+echo "export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin" >> ~/.profile
+echo "export PYSPARK_PYTHON=/usr/bin/python3" >> ~/.profile
+source ~/.profile
+start-master.sh (ouvrir le bon port sur azure)
+# Pour créer les workers : 
+ssh-keygen -t rsa -P ""
+cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+ssh localhost
+start-workers.sh
+
+## Après on peut faire pyspark et faire ce qu'on veut !!!
+
+#### Setup Hadoop
+
+
+
