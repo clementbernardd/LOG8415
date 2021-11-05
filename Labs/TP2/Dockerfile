@@ -18,11 +18,16 @@ RUN /etc/init.d/ssh start
 
 ADD configs/*xml $HADOOP_PREFIX/etc/hadoop/
 ADD configs/config /root/.ssh/config 
-ADD configs/*sh /root/configs/
+ADD configs/* /root/configs/
 ADD files/* /root/files/
-ADD codes/* /root/codes/
+ADD codes/bash/* /root/codes/bash/
+ADD codes/python/* /root/codes/python/
 ADD results/ /root/results/
+ADD credentials/* /root/credentials/
+
 
 WORKDIR /root
 EXPOSE 50070
-ENTRYPOINT service ssh restart && bash
+#CMD ['/etc/init.d/ssh', 'start']
+ENTRYPOINT service ssh restart && /root/configs/setup_hadoop.sh  &&  bash
+#ENTRYPOINT service ssh restart && /root/configs/start-hadoop.sh   &&  bash
