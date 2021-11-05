@@ -8,6 +8,6 @@ hdfs dfs -rm input/*
 
 hdfs dfs -copyFromLocal ../files/soc-LiveJournal1Adj.txt input
 
-hadoop jar FriendRecommendation.jar FriendRecommendation input output3
+hadoop jar FriendRecommendation.jar FriendRecommendation input output
 
 hdfs dfs -ls output/part-r-00000 > ../files/results.txt
