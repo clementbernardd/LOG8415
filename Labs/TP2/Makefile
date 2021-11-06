@@ -14,7 +14,7 @@ hadoop_vs_spark:
 	bash codes/bash/comparison_spark_hadoop.sh && $(MAKE) clean_hadoop
 
 docker_start :
-	bash start_docker.sh
+	bash codes/bash/start_docker.sh
 
 copy_results_to_local :
 	docker ps | grep log8415_tp2 | awk '{print $$1}' | xargs -I {} docker cp {}:/root/results ./

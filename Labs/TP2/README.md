@@ -4,6 +4,8 @@
 ## Setup 
 
 First of all, one should change the `RESSOURCE_GROUP` and `NAME` in `configs/setup_vm.sh` to be able to start VM inside the image. 
+Make sure to make the key to connect to Azure account the a folder `credentials`, and name it `log_key.cer`. 
+
 
 
 To start the docker, use this command :
