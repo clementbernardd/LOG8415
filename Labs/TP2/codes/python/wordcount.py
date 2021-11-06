@@ -1,6 +1,7 @@
 from pyspark.sql.functions import *
 from pyspark.sql import SparkSession
 import argparse
+from pyspark import SparkContext
 
 parser = argparse.ArgumentParser()
 
@@ -11,8 +12,8 @@ args = parser.parse_args()
 if args.file:
     fileName = args.file
 
-spark = SparkSession.builder.appName("WordCount").getOrCreate()
 
-textFile = spark.read.text(fileName)
+sc = SparkContext("local", "PySpark Word Count TP2 LOG8415")
+textFile = sc.textFile(fileName).flatMap(lambda line: line.split(" "))
+wordCounts = textFile.map(lambda word: (word, 1)).reduceByKey(lambda a,b:a +b)
 
-wordCounts = textFile.select(explode(split(textFile.value, "\s+")).alias("word")).groupBy("word").count()

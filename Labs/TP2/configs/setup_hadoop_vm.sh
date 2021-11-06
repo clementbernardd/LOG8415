@@ -9,14 +9,12 @@ function add_env_variables(){
   source ~/.profile ;
 }
 
-
-
 function install_packages(){
   apt-get update ;
   apt-get install -y  ssh rsync vim default-jre-headless openssh-server time ;
   wget https://dlcdn.apache.org/hadoop/common/hadoop-2.10.1/hadoop-2.10.1.tar.gz && \
   tar -xf hadoop-2.10.1.tar.gz -C /usr/local/ && \
-	echo "export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$PATH" >> ~/.bashrc  && \
+	echo "export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin" >> ~/.bashrc  && \
 	echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh ;
 }
 
@@ -28,11 +26,11 @@ function init_ssh(){
 }
 
 function set_hadoop(){
-  mv ./*xml $HADOOP_PREFIX/etc/hadoop/ ;
+  mv ./configs/*xml $HADOOP_PREFIX/etc/hadoop/ ;
 }
 
-add_env_variables;
-install_packages ;
+#add_env_variables;
+#install_packages ;
 init_ssh ;
 set_hadoop ;
 

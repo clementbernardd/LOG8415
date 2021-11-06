@@ -15,7 +15,9 @@ RUN \
   chmod 0600 ~/.ssh/authorized_keys 
 RUN /etc/init.d/ssh start
 
-RUN mkdir -p /root/results
+RUN mkdir -p /root/results/local
+RUN mkdir -p /root/results/azure
+
 
 ADD configs/*xml $HADOOP_PREFIX/etc/hadoop/
 ADD configs/config /root/.ssh/config 
