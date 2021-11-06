@@ -22,7 +22,7 @@ function get_hadoop_times(){
    show "FILE : $file";
     for i in $(seq 1 3);
     do
-         given_time=$(/usr/bin/time -f "%U"  bash $HOME_PATH/codes/bash/count_words_hadoop.sh $file $i  2>> $name_result );
+         given_time=$(/usr/bin/time -o $name_result -f "%U"  bash $HOME_PATH/codes/bash/count_words_hadoop.sh $file $i );
     done;
   done;
   show "END GET LINUX TIMES";
@@ -40,7 +40,7 @@ function get_spark_times(){
    show "FILE : $file";
     for i in $(seq 1 3);
     do
-         given_time=$(/usr/bin/time -f "%U"  bash $HOME_PATH/codes/bash/count_words_spark.sh $FILE_PATH/$file 2>> $name_result );
+         given_time=$(/usr/bin/time -f "%U" -o $name_result  bash $HOME_PATH/codes/bash/count_words_spark.sh $FILE_PATH/$file );
     done;
   done;
   show "END GET SPARK TIMES";
