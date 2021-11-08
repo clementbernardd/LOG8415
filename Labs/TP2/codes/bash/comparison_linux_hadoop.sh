@@ -13,7 +13,7 @@ function show(){
 }
 
 function get_linux_times(){
-  files=$(ls $FILE_PATH);
+  files=$(ls $FILE_PATH | grep dataset );
   dir=$RESULT_PATH/local/linux/time;
   dir_out=$RESULT_PATH/local/linux/counts;
   mkdir -p $dir $dir_out && rm -rf $dir/* $dir_out/* || true ;
@@ -31,7 +31,7 @@ function get_linux_times(){
 }
 
 function get_hadoop_times(){
-  files=$(ls $FILE_PATH);
+  files=$(ls $FILE_PATH | grep dataset );
   dir=$RESULT_PATH/local/hadoop/time;
   dir_out=$RESULT_PATH/local/hadoop/counts;
   mkdir -p $dir $dir_out && rm -rf $dir/* $dir_out/* || true ;

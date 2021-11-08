@@ -12,7 +12,7 @@ function show(){
 }
 
 function get_hadoop_times(){
-  files=$(ls $FILE_PATH);
+  files=$(ls $FILE_PATH | grep dataset );
   dir=$RESULT_PATH/azure/hadoop/time;
   dir_out=$RESULT_PATH/azure/hadoop/counts;
   mkdir -p $dir $dir_out && rm -rf $dir/* $dir_out/* || true ;
@@ -32,7 +32,7 @@ function get_hadoop_times(){
 
 
 function get_spark_times(){
-  files=$(ls $FILE_PATH);
+  files=$(ls $FILE_PATH | grep dataset );
   dir=$RESULT_PATH/azure/spark/time;
   dir_out=$RESULT_PATH/azure/spark/counts;
   mkdir -p $dir $dir_out && rm -rf $dir/* $dir_out/* || true ;

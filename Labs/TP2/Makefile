@@ -2,15 +2,24 @@
 SHELL := /bin/bash
 
 hadoop_vs_linux:
-	$(MAKE standalone)
+	$(MAKE) standalone
 	bash codes/bash/comparison_linux_hadoop.sh
+	$(MAKE) clean_hadoop
 
 setup_vm :
 	source configs/setup_hadoop.sh && stop_namenode && start_namenode && add_directory
 
 hadoop_vs_spark:
-	$(MAKE standalone)
+	$(MAKE) standalone
 	bash codes/bash/comparison_spark_hadoop.sh
+
+recommendation :
+	$(MAKE) distributed_hadoop
+	source codes/friendRecommendation/friend_recommendation.sh && setup_hadoop_recommendation && do_recommendation
+	$(MAKE) clean_hadoop
+
+distributed_hadoop:
+	source configs/setup_hadoop.sh && set_distributed
 
 standalone :
 	source configs/setup_hadoop.sh && set_standalone

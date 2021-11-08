@@ -16,6 +16,16 @@ make docker_start
 
 It will start the docker 
 
+## Experiments with WordCount program
+
+We set an experimentation to run Hadoop in pseudo-distributed mode. 
+
+To launch the experimentation, use the command : 
+
+```shell
+make count_words
+```
+
 ## Hadoop vs Linux 
 
 To launch the scenario, one should launch the following command : 
@@ -55,7 +65,7 @@ To get the results into the Docker VM and stop the VM, use :
 make close_vm
 ```
 
-Then, use the commands to get back the results in local : 
+Then, use the commands to get back the results (in local) : 
 
 ```shell
 make copy_results_to_local
@@ -63,9 +73,22 @@ make copy_results_to_local
 
 ## Plot results 
 
-# TO DO 
+To plot the results, we need to have the output of the experimentations, use the following command (in local) : 
+
+```shell
+make plot_results
+```
 
 
-## Recommandation 
+## Recommendation 
 
-# TO DO 
+To launch the command to recommend the users, use the command : 
+```shell
+make recommendation
+```
+
+# Authors 
+
+- Baptiste Pauletto (2096684) 
+- Clement Bernard (2096223)
+- Guilhem Hermet (2097854)
