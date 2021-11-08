@@ -18,8 +18,7 @@ RUN /etc/init.d/ssh start
 RUN mkdir -p /root/results/local
 RUN mkdir -p /root/results/azure
 
-#ADD configs/*xml $HADOOP_PREFIX/etc/hadoop/
-ADD configs/config /root/.ssh/config 
+ADD configs/config /root/.ssh/config
 ADD configs/* /root/configs/
 ADD files/* /root/files/
 ADD codes/bash/* /root/codes/bash/

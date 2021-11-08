@@ -52,6 +52,7 @@ close_vm :
 
 clean_hadoop:
 	source configs/setup_hadoop.sh && stop_namenode
+	rm -rf output || true
 
 clean :
 	rm -rf results/azure/* credentials results configs codes files *.tar *.gz *.tgz || true

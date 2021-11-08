@@ -65,12 +65,6 @@ To get the results into the Docker VM and stop the VM, use :
 make close_vm
 ```
 
-Then, use the commands to get back the results (in local) : 
-
-```shell
-make copy_results_to_local
-```
-
 ## Plot results 
 
 To plot the results, we need to have the output of the experimentations, use the following command (in local) : 
