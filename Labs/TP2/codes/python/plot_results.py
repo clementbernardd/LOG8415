@@ -2,6 +2,7 @@ import fire
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class PlotObject(object):
@@ -41,20 +42,31 @@ class PlotObject(object):
         return method_times
 
 
-    def _plot_comparison(self, method_times: dict):
+    def _plot_df(self, method_times: dict):
+        """Print in a dataframe the results."""
+        methods = list(method_times.keys())
+        dataset_names = [f'dataset{i}.txt' for i in range(10)]
+        df = {m : [method_times[m][k] for k in dataset_names] for i,m in enumerate(methods)}
+        # Add the mean
+        for m in df :
+            df[m].append(np.mean(df[m]))
+        dataset_names.append('Mean')
+        df = pd.DataFrame(df, index = dataset_names)
+        print(df)
+
+    def _plot_comparison(self, method_times: dict, has_spark = False):
         """Plot the comparison for the given methods."""
         figure, ax = plt.subplots(figsize=(12, 8), nrows=2, ncols=1)
         # Plot the bar chart for each dataset
         ax1 = ax[0]
         ax2 = ax[1]
-
         methods = list(method_times.keys())
         dataset_names = [f'dataset{i}.txt' for i in range(10)]
         data1 = [method_times[methods[0]][k] for k in dataset_names]
         data2 = [method_times[methods[1]][k] for k in dataset_names]
         width = 0.3
         ax1.bar(np.arange(len(data1)), data1, width=width, color='r', label=methods[0])
-        ax1.bar(np.arange(len(data2)) + width, data2, width=width, color='b', label=methods[1])
+        ax1.bar(np.arange(len(data2)) + width, data2, width=width, color='g' if has_spark else 'b', label=methods[1])
         ax1.tick_params(axis='x', labelrotation=10)
         ax1.set_xticks(np.arange(10))
         ax1.set_yscale('log')
@@ -66,7 +78,7 @@ class PlotObject(object):
         ax1.set_title(f'Comparison per dataset for {methods[0]} and {methods[1]}', fontsize=12)
         # Plot bar chart for the average of the average
         data = [np.mean(data1), np.mean(data2)]
-        colors=['r', 'b']
+        colors=['r', 'g'] if has_spark else ['r', 'b']
         ax2.set_xticks([0, 1])
         ax2.set_xticklabels(methods)
         ax2.set_ylabel('Average User time')
@@ -81,6 +93,12 @@ class PlotObject(object):
     def plot_hadoop_vs_linux(self):
         method_times = self._get_scores_by_method()
         self._plot_comparison(method_times)
+        self._plot_df(method_times)
+
+    def plot_hadoop_vs_spark(self):
+        method_times = self._get_scores_by_method(methods=['hadoop', 'spark'])
+        self._plot_comparison(method_times, has_spark=True)
+        self._plot_df(method_times)
 
 
 
