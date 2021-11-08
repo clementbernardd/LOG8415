@@ -49,6 +49,6 @@ function example(){
   show "COUNT WORDS IN PSEUDO-DISTRIBUTED MODE" ;
   hadoop jar $HADOOP_PREFIX/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.1.jar wordcount input/dataset0.txt output/dataset0  ;
   show "SHOW 10 outputs" ;
-  hdfs dfs -cat output/dataset0/part-r-00000 | tail -n 10 ;
+  hdfs dfs -cat output/dataset0/part-r-00000 
   show "END COUNT WORDS IN PSEUDO-DISTRIBUTED MODE";
 }
