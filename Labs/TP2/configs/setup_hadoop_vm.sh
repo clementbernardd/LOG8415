@@ -31,6 +31,6 @@ function set_hadoop(){
 
 #add_env_variables;
 #install_packages ;
-init_ssh ;
-set_hadoop ;
+#init_ssh ;
+#set_hadoop ;
 

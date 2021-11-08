@@ -23,11 +23,32 @@ function stop_namenode(){
 }
 
 function add_directory(){
-  hdfs dfs -rm -r .;
   show "CREATE DIRECTORY IN HADOOP";
   hdfs dfs -mkdir -p input &>/dev/null ;
   show "COPY LOCAL FILE TO HADOOP DIRECTORY";
   hdfs dfs -copyFromLocal files/* input &>/dev/null ;
   show "COPY OF THE FILES WITH SUCCESS";
+}
 
+function set_standalone(){
+  show "SETUP STANDALONE MODE";
+  cp ./configs/core-site-standalone.xml $HADOOP_PREFIX/etc/hadoop/core-site.xml
+  cp ./configs/hdfs-site-standalone.xml $HADOOP_PREFIX/etc/hadoop/hdfs-site.xml
+  show "END SETUP STANDALONE MODE";
+}
+
+function set_distributed(){
+  show "SETUP PSEUDO-DISTRIBUTED MODE";
+  cp ./configs/core-site.xml ./configs/hdfs-site.xml $HADOOP_PREFIX/etc/hadoop/
+  start_namenode;
+  add_directory;
+  show "HADOOP IN PSEUDO-DISTRIBUTED MODE";
+}
+
+function example(){
+  show "COUNT WORDS IN PSEUDO-DISTRIBUTED MODE" ;
+  hadoop jar $HADOOP_PREFIX/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.1.jar wordcount input/dataset0.txt output/dataset0  ;
+  show "SHOW 10 outputs" ;
+  hdfs dfs -cat output/dataset0/part-r-00000 | tail -n 10 ;
+  show "END COUNT WORDS IN PSEUDO-DISTRIBUTED MODE";
 }

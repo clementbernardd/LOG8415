@@ -36,7 +36,7 @@ function start_vm(){
 
 function stop_vm(){
   show "STOP VM";
-  az vm stop --name $NAME --resource-group $RESSOURCE_GROUP
+  az vm deallocate --name $NAME --resource-group $RESSOURCE_GROUP
 }
 
 
