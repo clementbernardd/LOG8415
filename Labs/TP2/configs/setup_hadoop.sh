@@ -9,7 +9,7 @@ function show(){
 
 function start_namenode(){
   show "START FORMAT HDFS" ;
-  echo 'Y' | $HADOOP_PREFIX/bin/hdfs namenode -format &>/dev/null ;
+  echo 'Y' | $HADOOP_PREFIX/bin/hdfs namenode -format  &>/dev/null ;
   show "HDFS FORMAT WITH SUCCESS";
   show "START HADOOP SINGLE NODE CLUSTER"
   $HADOOP_PREFIX/sbin/start-dfs.sh &>/dev/null ;
@@ -23,11 +23,11 @@ function stop_namenode(){
 }
 
 function add_directory(){
+  hdfs dfs -rm -r .;
   show "CREATE DIRECTORY IN HADOOP";
   hdfs dfs -mkdir -p input &>/dev/null ;
   show "COPY LOCAL FILE TO HADOOP DIRECTORY";
   hdfs dfs -copyFromLocal files/* input &>/dev/null ;
   show "COPY OF THE FILES WITH SUCCESS";
+
 }
-
-

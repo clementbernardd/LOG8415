@@ -35,7 +35,7 @@ class PlotObject(object):
         """Return the average time for each method for all the datasets."""
         method_times = {}
         for method in methods:
-            path = os.path.join(self.path_to_output, method)
+            path = os.path.join(self.path_to_output, method, 'time')
             all_times = self._get_all_times(path)
             method_times[method] = all_times
         return method_times

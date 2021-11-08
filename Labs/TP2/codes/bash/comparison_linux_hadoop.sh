@@ -14,8 +14,9 @@ function show(){
 
 function get_linux_times(){
   files=$(ls $FILE_PATH);
-  dir=$RESULT_PATH/local/linux;
-  mkdir -p $dir;
+  dir=$RESULT_PATH/local/linux/time;
+  dir_out=$RESULT_PATH/local/linux/counts;
+  mkdir -p $dir $dir_out && rm -rf $dir/* $dir_out/* || true ;
   show "GET LINUX TIMES";
   for file in $files  ;
   do
@@ -23,7 +24,7 @@ function get_linux_times(){
      show "FILE : $file"
     for i in $(seq 1 3);
     do
-         given_time=$(/usr/bin/time -o $name_result -f "%U"  bash $HOME_PATH/codes/bash/count_words.sh $FILE_PATH/$file  );
+         given_time=$(/usr/bin/time -f "%U"  bash $HOME_PATH/codes/bash/count_words.sh $FILE_PATH/$file $dir_out/$file 2>> $name_result );
     done;
   done;
   show "END GET LINUX TIMES";
@@ -31,8 +32,9 @@ function get_linux_times(){
 
 function get_hadoop_times(){
   files=$(ls $FILE_PATH);
-  dir=$RESULT_PATH/local/hadoop;
-  mkdir -p $dir;
+  dir=$RESULT_PATH/local/hadoop/time;
+  dir_out=$RESULT_PATH/local/hadoop/counts;
+  mkdir -p $dir $dir_out && rm -rf $dir/* $dir_out/* || true ;
   show "GET HADOOP TIMES";
   for file in $files  ;
   do
@@ -40,7 +42,8 @@ function get_hadoop_times(){
    show "FILE : $file";
     for i in $(seq 1 3);
     do
-         given_time=$(/usr/bin/time -o $name_result -f "%U"  bash $HOME_PATH/codes/bash/count_words_hadoop.sh $file $i );
+         given_time=$(/usr/bin/time -f "%U"  bash $HOME_PATH/codes/bash/count_words_hadoop.sh $file $i 2>> $name_result );
+         hdfs dfs -cat "output/${file}_${i}/part-r-00000" | tail -n 10 &>> $dir_out/$file ;
     done;
   done;
   show "END GET HADOOP TIMES";
