@@ -49,7 +49,8 @@ To log to Azure, start the VM, send files to it and connect with SSH inside, use
 make azure
 ```
 
-It will ask to go in a URL with a given code. Do so. 
+It will ask to go to a particular URL with a given code. Do so.  
+(this part is the only one we were not able to automatize because of this "interactive" step required by Azure)
 
 ## Hadoop vs Spark
 
@@ -63,6 +64,12 @@ Then, exit the VM with `exit`.
 To get the results into the Docker VM and stop the VM, use : 
 ```shell
 make close_vm
+```
+
+Then, use the following command to get back the results on your physical machine (in local) : 
+
+```shell
+make copy_results_to_local
 ```
 
 ## Plot results 
