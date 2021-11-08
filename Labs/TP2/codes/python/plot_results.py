@@ -26,7 +26,7 @@ class PlotObject(object):
     def _get_all_times(self, path: str):
         """Return all the average time for all the datasets."""
         dataset_times = {}
-        for file in os.listdir(path) :
+        for file in os.listdir(path):
             current_path = os.path.join(path, file)
             dataset_times[file]=self._read_txt(current_path)
         return dataset_times
@@ -47,14 +47,16 @@ class PlotObject(object):
         # Plot the bar chart for each dataset
         ax1 = ax[0]
         ax2 = ax[1]
+
         methods = list(method_times.keys())
-        data1=list(method_times[methods[0]].values())
-        data2 = list(method_times[methods[1]].values())
-        dataset_names = list(method_times[methods[0]].keys())
+        dataset_names = [f'dataset{i}.txt' for i in range(10)]
+        data1 = [method_times[methods[0]][k] for k in dataset_names]
+        data2 = [method_times[methods[1]][k] for k in dataset_names]
         width = 0.3
         ax1.bar(np.arange(len(data1)), data1, width=width, color='r', label=methods[0])
         ax1.bar(np.arange(len(data2)) + width, data2, width=width, color='b', label=methods[1])
         ax1.tick_params(axis='x', labelrotation=10)
+        ax1.set_xticks(np.arange(10))
         ax1.set_yscale('log')
         ax1.set_ylabel('User time')
         ax1.set_xlabel('Dataset')
@@ -64,7 +66,6 @@ class PlotObject(object):
         ax1.set_title(f'Comparison per dataset for {methods[0]} and {methods[1]}', fontsize=12)
         # Plot bar chart for the average of the average
         data = [np.mean(data1), np.mean(data2)]
-        # width = 0.5
         colors=['r', 'b']
         ax2.set_xticks([0, 1])
         ax2.set_xticklabels(methods)
@@ -72,7 +73,6 @@ class PlotObject(object):
         ax2.bar(range(len(data)), data, width = 0.3,  color=colors)
         ax2.grid(True)
         ax2.set_yscale('log')
-        ax2.legend()
         ax2.grid(True)
         ax2.set_xlabel('Methods')
         plt.show()
