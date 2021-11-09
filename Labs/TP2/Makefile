@@ -11,6 +11,7 @@ setup_vm :
 
 hadoop_vs_spark:
 	$(MAKE) standalone
+	rm -rf output | true 
 	bash codes/bash/comparison_spark_hadoop.sh
 
 recommendation :
