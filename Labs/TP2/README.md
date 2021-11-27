@@ -8,7 +8,7 @@ Our code is composed of the following directory :
   - `bash` : the bash codes to do comparison, count words (with Hadoop, Spark and Linux), and a script to build and run Docker,
   - `friendRecommendation` : the friend Recommendation code in Java for the Hadoop program to do recommendation.
   - `python` : python programs, one to plot the results and the other one to do word count with pyspark.
-- 'configs' : the different configuration files. There are the `core-site.xml` and `hdfs-site.xml` used for the pseudo-distributed hadoop mode, and also two bash script for the setup of hadoop and azure.
+- `configs` : the different configuration files. There are the `core-site.xml` and `hdfs-site.xml` used for the pseudo-distributed hadoop mode, and also two bash script for the setup of hadoop and azure.
 - `files` : where are the datasets used
 - `img` : the folder where are the screenshots of the output we got. 
 - `results` : the results of our time comparison. It is composed of `azure` or `local` directories, with the `hadoop`, `linux` or `spark` results depending the scenario. There is also 10 examples of word count outputs for each dataset, such as times for each method on each dataset (3 values). 
